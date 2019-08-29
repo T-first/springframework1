@@ -25,11 +25,32 @@ public class Test {
 //          st.forEach(x-> System.out.println(x.getId()));
 
 
-        Stream<String> words = Stream.of("Java", "Magazine", "is",
-                "the", "best");
-        Map<String, Long> letterToCount =
-                words.map(w -> w.split(""))
-                        .flatMap(Arrays::stream)
-                        .collect(groupingBy(identity(), counting()));
+//        Stream<String> words = Stream.of("Java", "Magazine", "is",
+//                "the", "best");
+//        Map<String, Long> letterToCount =
+//                words.map(w -> w.split(""))
+//                        .flatMap(Arrays::stream)
+//                        .collect(groupingBy(identity(), counting()));
+        System.out.println(subwayPrice(22,14));
     }
-}
+     public static double  subwayPrice(double totalday,double price){
+         double days =0;
+         double total=0;
+         int index1 = 100/(int) price;
+         for(int i=0;i<index1&&days<totalday;i++){
+             total=total+price;
+             days++;
+         }
+         for(int i=0;total<150&&days<totalday;i++){
+             total=0.8*price + total;
+             days++;
+         }
+         for(int i=0;total>150&&days<totalday;i++){
+             total=0.5*price + total;
+             days++;
+         }
+        return total;
+     }
+    }
+
+
